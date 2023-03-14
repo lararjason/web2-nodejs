@@ -8,12 +8,13 @@
     <title>Document</title>
 </head>
 <body>
-    <ul>
     <% data.forEach(function (post) { %>
-        <li>
-            <a href="/p/<%= post.url %>"><%= post.title %></a>
-        </li>
+            <% if(post.img != ''){ %>
+            <img src="<%= post.img %>">
+            <% } %> 
+            <h3><%= post.title %></h3>
+            <%= post.date %>
+            <p><%= post.text %></p>
     <% }) %>
-    </ul>
 </body>
 </html>
