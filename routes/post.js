@@ -20,18 +20,17 @@ router.post('/', upload.single('img'), function(req,res){
     });
  });
 
- router.get('/', function(req,res){
+    router.get('/', function(req,res){
     res.render('post')
  });
  
  router.get('/:id', function(req,res){
-    let sql = 'select *from posts where url IN('+req.params.id+')';
+    let sql = 'select *from posts where url IN("'+req.params.id+'")';
     db.query(sql, function(err, results){
         if(err) {
             throw err;
         } else {
             obj = {data: results};
-            console.log(obj.data.length)
             if (obj.data == '') {
                 res.render('404')
             } else{
